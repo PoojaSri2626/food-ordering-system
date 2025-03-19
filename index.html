@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Canteen Ordering</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+    <!-- Welcome Page -->
+    <div id="welcome-screen">
+        <h1>Welcome to College Canteen 🍽️</h1>
+        <p>Delicious food is just a click away! Order online & skip the queue.</p>
+        <button onclick="startOrdering()">Start Ordering</button>
+    </div>
+
+    <!-- Category Page -->
+    <div class="container" id="categoryPage" style="display:none;">
+      <button class="back-btn" onclick="goBack()">🔙</button>
+        <h1>Choose Your Food Category</h1>
+        <div class="category-buttons">
+            <button onclick="showCategory('tiffins')">🍛 Tiffins</button>
+            <button onclick="showCategory('fastfood')">🍟 Fast Food</button>
+            <button onclick="showCategory('lunch')">🍽️ Lunch Meals</button>
+            <button onclick="showCategory('snacks')">🍫 Snacks</button>
+            <button onclick="showCategory('drinks')">🥤 Cold Drinks</button>
+        </div>
+        <div id="foodItems" style="display:none;">
+            <h2 id="categoryTitle"></h2>
+            <div id="foodList"></div>
+        </div>
+        <button id="cartButton" onclick="goToCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+    </div>
+
+    <!-- Cart Page -->
+    <div class="container" id="cartPage" style="display:none;">
+      <button class="back-btn" onclick="goBack()">🔙</button>
+        <h1>Your Food 🛒</h1>
+        <ul id="cart"></ul>
+        <p>Total: ₹<span id="total">0</span></p>
+        <button id="proceedToPay" onclick="goToPayment()">Proceed to Pay</button>
+    </div>
+
+    <!-- Payment Page -->
+    <div class="container" id="paymentPage" style="display:none;">
+      <button class="back-btn" onclick="goBack()">🔙</button>
+        <h1>Payment</h1>
+        <p>Total: ₹<span id="finalTotal">0</span></p>
+        <select id="paymentMethod">
+            <option value="UPI">UPI</option>
+            <option value="Card">Credit/Debit Card</option>
+            <option value="Cash">Cash on Delivery</option>
+        </select>
+        <button id="payButton" onclick="generateQRCode()">Pay</button>
+    </div>
+
+    <!-- QR Code Page -->
+    <div class="container" id="qrPage" style="display:none;">
+      <button class="back-btn" onclick="goBack()">🔙</button>
+        <h2>✅ Order Successful!</h2>
+        <div id="qrcode"></div>
+        <p>Scan the QR Code to receive your food! 🍽️</p>
+        <p>🙏 Thank you for ordering! Enjoy your meal! 🍕</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
